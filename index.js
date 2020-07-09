@@ -121,7 +121,7 @@ try {
   console.log(`The event payload: ${payload}`);
 
   // call the main function and do the work
-  main().catch(core.setFailed(error.message));
+  main().catch(error => core.setFailed(error.message));
 
 
 } catch (error) {
