@@ -86,8 +86,10 @@ async function get_release_note(github_releases_token, repo_name) {
 
   var response = await new Promise(function (resolve, reject) {
       request.get(options, function (error, response, body) {
-          if (error)
-              reject(error);
+          if (error){
+            reject(error);
+            throw "Error getting releases";
+          }
           else
               resolve(JSON.parse(body));
       });
