@@ -7,6 +7,9 @@ inputs:
   repo_name:
     description: The repo name that we're working on.
     required: true
+  email_recipient:
+    description: The email address to send to
+    required: true
   email_username:
     description: Username for the dedicated gmail sender user
     required: true
