@@ -11,5 +11,5 @@ inputs:
     description: Password for the dedicated email sender user
     required: true
 runs:
-  using: 'node8'
+  using: 'node12'
   main: 'index.js'
