@@ -7,8 +7,11 @@ inputs:
   repo_name:
     description: The repo name that we're working on.
     required: true
+  email_username:
+    description: Username for the dedicated gmail sender user
+    required: true
   email_password:
-    description: Password for the dedicated email sender user
+    description: Password for the dedicated gmail sender user
     required: true
 runs:
   using: 'node12'

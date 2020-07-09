@@ -12,6 +12,10 @@ This action prints "Hello World" or "Hello" + the name of a person to greet to t
 
 **Required** The reponame being requested
 
+### `email_username`
+
+**Required** The username for the dedicated @brafton Gmail sending user
+
 ### `email_password`
 
 **Required** The password for the dedicated @brafton Gmail sending user
@@ -23,6 +27,6 @@ This action prints "Hello World" or "Hello" + the name of a person to greet to t
 uses: brafton/email-release-notes-action@master
 with:
   github_token: ${{ github.token }}
-  repo_name: brafton_alerts
+  repo_name: your_repo_name
   email_password: your_pa$$word
 ```
