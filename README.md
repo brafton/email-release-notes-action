@@ -1,23 +1,28 @@
-# Hello world JavaScript action
+# Email Release Notes action
 
 This action prints "Hello World" or "Hello" + the name of a person to greet to the log. To learn how this action was built, see "[Creating a JavaScript action](https://help.github.com/en/articles/creating-a-javascript-action)" in the GitHub Help documentation.
 
 ## Inputs
 
-### `who-to-greet`
+### `github_token`
 
-**Required** The name of the person to greet. Default `"World"`.
+**Required** The token for requesting release notes info with
 
-## Outputs
+### `repo_name`
 
-### `time`
+**Required** The reponame being requested
 
-The time we greeted you.
+### `email_password`
+
+**Required** The password for the dedicated @brafton Gmail sending user
+
 
 ## Example usage
 
 ```yaml
-uses: actions/hello-world-javascript-action@master
+uses: brafton/email-release-notes-action@master
 with:
-  who-to-greet: 'Mona the Octocat'
+  github_token: ${{ github.token }}
+  repo_name: brafton_alerts
+  email_password: your_pa$$word
 ```

@@ -1,13 +1,15 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Email Release Notes'
+description: 'Email Release Notes to @Brafton distribution list'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  github_token:
+    description: A Github token for the repo, usually `{{ github.token }}`.
     required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we we greeted you'
+  repo_name:
+    description: The repo name that we're working on.
+    required: true
+  email_password:
+    description: Password for the dedicated email sender user
+    required: true
 runs:
-  using: 'node12'
+  using: 'node8'
   main: 'index.js'
