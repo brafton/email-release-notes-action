@@ -66,7 +66,7 @@ async function send_email(email_creds, subject, body_html) {
   // 2. send mail with defined transport object
   var info = await transporter.sendMail({
       from: '"Stewart Snow" <stewart.snow@brafton.com>', // sender address
-      to: "dev-support@brafton.com", // list of receivers
+      to: "stewart.snow@brafton.co.uk", // list of receivers
       cc: "stewart.snow@brafton.com",
       subject: subject, // Subject line
       html: payload //html body
