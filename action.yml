@@ -7,6 +7,9 @@ inputs:
   repo_name:
     description: The repo name that we're working on.
     required: true
+  product_name:
+    description: The optional different name for the product to appear in posts
+    required: false
   email_recipient:
     description: The email address to send to
     required: true
