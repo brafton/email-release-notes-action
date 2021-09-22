@@ -1,0 +1,17 @@
+# Managed by https://github/brafton/microplane-checks
+# DO NOT EDIT MANUALLY
+version: 2
+
+registries:
+  npm-combined-feed:
+    type: npm-registry
+    url: https://www.myget.org/F/brafton-combined-release-only/npm/
+    token: ${{secrets.MYGET_RELEASES_KEY}}
+
+updates:
+  - package-ecosystem: npm
+    directory: /
+    registries:
+      - npm-combined-feed
+    schedule:
+      interval: daily
