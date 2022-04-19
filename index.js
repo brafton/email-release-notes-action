@@ -10,7 +10,7 @@ var emailUsername = "";
 var emailRecipient = "";
 var emailSender = "";
 var productName = "";
-var hostName = "smtp.gmail.com";
+var hostName = "";
 
 /**
  * main
@@ -50,7 +50,7 @@ async function send_email(email_password, email_username, email_recipient, subje
   var transporter = nodemailer.createTransport({
       host: host_name,
       port: 587,
-      secure: true,
+      secure: false,
       auth: {
           user: email_username,
           pass: email_password
