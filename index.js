@@ -9,6 +9,7 @@ var emailPassword = "";
 var emailUsername = "";
 var emailRecipient = "";
 var productName = "";
+var hostName = "smtp.gmail.com";
 
 /**
  * main
@@ -34,7 +35,7 @@ async function main() {
   subject = is_draft == true ? `${prettyName} Staging Release ${release_note.tag_name}` : `${prettyName} Production Release ${release_note.tag_name}`;
 
   // 3. send the email
-  await send_email(emailPassword, emailUsername, emailRecipient, subject, release_note.body_html)
+  await send_email(emailPassword, emailUsername, emailRecipient, subject, release_note.body_html, hostName)
 }
 
 /**
@@ -43,12 +44,12 @@ async function main() {
 * @param subject 
 * @param body_html the release note html to be sent
 */
-async function send_email(email_password, email_username, email_recipient, subject, body_html) {
+async function send_email(email_password, email_username, email_recipient, subject, body_html, host_name) {
   // 1. create reusable transporter object using the default SMTP transport
   var transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
+      host: host_name,
       port: 587,
-      secure: false, // true for 465, false for other ports
+      secure: true,
       auth: {
           user: email_username,
           pass: email_password
@@ -117,8 +118,9 @@ try {
   emailUsername = core.getInput('email_username');
   emailRecipient = core.getInput('email_recipient');
   productName = core.getInput('product_name');
+  hostName = core.getInput('host_name') || hostName;
 
-  console.log(`Hello reponame=${repoName} token=${githubToken} username=${emailUsername} password=${emailPassword}`);
+  //console.log(`Hello reponame=${repoName} token=${githubToken} username=${emailUsername} password=${emailPassword}`);
 
   // Get the JSON webhook payload for the event that triggered the workflow
   const payload = JSON.stringify(github.context.payload, undefined, 2)

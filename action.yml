@@ -19,6 +19,9 @@ inputs:
   email_password:
     description: Password for the dedicated gmail sender user
     required: true
+  host_name: 
+    description: SMTP host name
+    required: false
 runs:
   using: 'node12'
   main: 'index.js'
