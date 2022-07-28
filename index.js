@@ -11,6 +11,7 @@ var emailRecipient = "";
 var emailSender = "";
 var productName = "";
 var hostName = "";
+var sendSecure = false;
 
 /**
  * main
@@ -36,7 +37,7 @@ async function main() {
   subject = is_draft == true ? `${prettyName} Staging Release ${release_note.tag_name}` : `${prettyName} Production Release ${release_note.tag_name}`;
 
   // 3. send the email
-  await send_email(emailPassword, emailUsername, emailRecipient, subject, release_note.body_html, hostName, emailSender)
+  await send_email(emailPassword, emailUsername, emailRecipient, subject, release_note.body_html, hostName, emailSender, sendSecure)
 }
 
 /**
@@ -45,12 +46,12 @@ async function main() {
 * @param subject 
 * @param body_html the release note html to be sent
 */
-async function send_email(email_password, email_username, email_recipient, subject, body_html, host_name, email_sender) {
+async function send_email(email_password, email_username, email_recipient, subject, body_html, host_name, email_sender, secure) {
   // 1. create reusable transporter object using the default SMTP transport
   var transporter = nodemailer.createTransport({
       host: host_name,
       port: 587,
-      secure: false,
+      secure: secure,
       auth: {
           user: email_username,
           pass: email_password
@@ -121,6 +122,7 @@ try {
   productName = core.getInput('product_name');
   hostName = core.getInput('host_name');
   emailSender = core.getInput('email_sender');
+  sendSecure = core.getInput('send_secure');
 
   //console.log(`Hello reponame=${repoName} token=${githubToken} username=${emailUsername} password=${emailPassword}`);
 
