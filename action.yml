@@ -25,6 +25,9 @@ inputs:
   host_name: 
     description: SMTP host name
     required: true
+  send_secure: 
+    description: Use HTTPS or not to connect to the host
+    default: false
 runs:
   using: 'node12'
   main: 'index.js'
