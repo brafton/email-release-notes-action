@@ -47,11 +47,13 @@ async function main() {
 * @param body_html the release note html to be sent
 */
 async function send_email(email_password, email_username, email_recipient, subject, body_html, host_name, email_sender, secure) {
+  console.log('secure = ' + secure.toString());
+  console.log('secure bool = ' + secure === true ? 'true' : 'false');
   // 1. create reusable transporter object using the default SMTP transport
   var transporter = nodemailer.createTransport({
       host: host_name,
       port: 587,
-      secure: secure,
+      secure: secure === true ? true : false,
       auth: {
           user: email_username,
           pass: email_password
