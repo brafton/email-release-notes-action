@@ -48,7 +48,7 @@ async function main() {
 */
 async function send_email(email_password, email_username, email_recipient, subject, body_html, host_name, email_sender, secure) {
   console.log('secure = ' + secure.toString());
-  console.log('secure bool = ' + secure === true ? 'true' : 'false');
+  console.log('secure bool = ' + (secure === true ? 'true' : 'false'));
   // 1. create reusable transporter object using the default SMTP transport
   var transporter = nodemailer.createTransport({
       host: host_name,
